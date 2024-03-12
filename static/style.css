@@ -92,11 +92,3 @@ hr {
   color: var(--color-accent);
   background-color: var(--color-accent);
 }
-
-.color-scheme { 
-  position: absolute;
-  top: 2rem;
-  right: 4rem;
-  font: 80% system-ui;
-  font-family: inherit;
-}

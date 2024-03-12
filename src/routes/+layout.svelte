@@ -8,6 +8,12 @@
         {url: "./contact", title: "contact"},
         {url: "https://github.com/annegv", title: "github"}
     ];
+
+    let localStorage = globalThis.localStorage ?? {};
+    let colorScheme = localStorage.colorScheme ?? "light dark";
+    let root = globalThis?.document?.documentElement;
+    $: root?.style.setProperty("color-scheme", colorScheme);
+    $: localStorage.colorScheme = colorScheme;
 </script>
 
 <nav>
@@ -15,6 +21,15 @@
         <a href={ p.url } class:current={ "." + $page.route.id === p.url } target={ p.url.startsWith("http") ? "_blank" : null }>{ p.title }</a>
 	{/each}
 </nav>
+
+<label class="color-scheme">
+    Theme: 
+    <select bind:value={ colorScheme } class="color-scheme-selector">
+        <option value="light dark">auto</option>
+        <option value="light">light</option>
+        <option value="dark">dark</option>
+    </select>
+</label>
 
 <slot />
 
@@ -34,6 +49,14 @@ a {
     color: inherit;
     text-align: center;
     padding: 0.5em;
+}
+
+.color-scheme { 
+  position: absolute;
+  top: 2rem;
+  right: 4rem;
+  font: 80% system-ui;
+  font-family: inherit;
 }
 
 a:hover {
