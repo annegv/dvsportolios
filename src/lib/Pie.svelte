@@ -15,7 +15,7 @@
     
     function toggleWedge (index, event) {
         if (!event.key || event.key === "Enter") {
-            selectedIndex = index;
+            selectedIndex = selectedIndex === index ? -1 : index;
         }
     }
 </script>
