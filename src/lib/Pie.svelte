@@ -1,26 +1,41 @@
 <script>
     import * as d3 from 'd3';
-    let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
-
     export let data = [];
+    export let selectedIndex = -1;
+
+    let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
+    
     let colors = d3.scaleOrdinal(d3.schemeTableau10);
     let sliceGenerator = d3.pie().value(d => d.value);
-    let arcData = sliceGenerator(data);
-    let arcs = arcData.map(d => arcGenerator(d));
 
+    let arcData;
+    $: arcData = sliceGenerator(data);
+    let arcs;
+    $: arcs = arcData.map(d => arcGenerator(d));
+    
+    function toggleWedge (index, event) {
+        if (!event.key || event.key === "Enter") {
+            selectedIndex = index;
+        }
+    }
 </script>
+
 
 <div class="container">
     <svg viewBox="-50 -50 100 100">
-        {#each arcs as arc, i}
-            <path d={ arc } fill={ colors(i) } />
+        {#each arcs as arc, index}
+            <path d={arc} fill={ colors(index) }
+                class:selected={selectedIndex === index}
+                on:click={e => toggleWedge(index, e)} 
+                on:keyup={e => toggleWedge(index, e)}
+                tabindex="0" role="button" aria-label="select projects"/>
         {/each}
     </svg>
 
     <ul class="legend">
         {#each data as d, index}
             <li style="--color: { colors(index) }" class="legend_item">
-                <span class="swatch"></span>
+                <span class="swatch" class:selected={selectedIndex === index}></span>
                 {d.label} <em>({d.value})</em>
             </li>
         {/each}
@@ -36,6 +51,26 @@
 
         /* Do not clip shapes outside the viewBox */
         overflow: visible;
+    }
+
+    svg:has(path:hover, path:focus-visible) {
+        path:not(:hover, :focus-visible) {
+            opacity: 50%;
+        }
+    }
+
+    path {
+        transition: 300ms;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .selected {
+        --color: #2e2c4d !important;
+
+        &:is(path) {
+            fill: var(--color);
+        }
     }
 
     .container {
