@@ -28,7 +28,7 @@
     let selectedYear;
     $: selectedYear = selectedYearIndex > -1 ? pieData[selectedYearIndex].label : null;
 
-    $: filteredByYear = projects.filter(project => {
+    $: filteredByYear = filteredProjects.filter(project => {
         if (selectedYear) {
             return project.year === selectedYear;
         }
