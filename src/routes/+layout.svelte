@@ -5,6 +5,7 @@
         {url: "./", title: "home"},
         {url: "./projects", title: "projects"},
         {url: "./cv", title: "resume"},
+        {url: "./meta", title: "meta"},
         {url: "./contact", title: "contact"},
         {url: "https://github.com/annegv", title: "github"}
     ];
