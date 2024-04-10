@@ -10,6 +10,9 @@
         {info.description}
         <div class="year_label">
             year: {info.year}
+            {#if info.url != ""}
+                | <a href={info.url} target="_blank">project url</a>
+            {/if}
         </div> 
     </div>
 </article>

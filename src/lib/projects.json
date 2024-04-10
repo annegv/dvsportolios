@@ -3,72 +3,91 @@
         "title": "Exploratory Data Analysis",
         "year": "2024",
         "image": "https://raw.githubusercontent.com/annegv/dvsportolios/main/static/images/viz1.jpg",
-        "description": "This was an analysis of zoning data in different municipalities in Massachusetts, exploring how different exclusionary zoning policies affected types of homes constructed."
+        "description": "This was an analysis of zoning data in different municipalities in Massachusetts, exploring how different exclusionary zoning policies affected types of homes constructed.",
+        "url":""
     },
     {
         "title": "Visualization Design",
         "year": "2024",
         "image": "https://raw.githubusercontent.com/annegv/dvsportolios/main/static/images/a3v5.png",
-        "description": "This was an analysis of population data from the US Census, looking at how population counts across different genders have changed over the past century."
+        "description": "This was an analysis of population data from the US Census, looking at how population counts across different genders have changed over the past century.",
+        "url":""
+    },
+    {
+        "title": "Bikewatching",
+        "year": "2024",
+        "image": "https://raw.githubusercontent.com/annegv/dvsportolios/main/static/images/bikewatching.jpg",
+        "description": "This was a visualization of some Massachusetts bike line and station activity over time, seen on a map of Cambridge and Boston.",
+        "url":"https://annegv.github.io/bikewatching/"
     },
     {
         "title": "Persuasive or Deceptive Visualization?",
         "year": "2024",
         "image": "https://raw.githubusercontent.com/annegv/dvsportfolio/main/images/a4viz1.jpg",
-        "description": "This was an exploration of how different visualizations can warp and twist what readers perceive through seemingly simple or innocuous design decisions; it explored the boundaries between ethical and honest visualization."
+        "description": "This was an exploration of how different visualizations can warp and twist what readers perceive through seemingly simple or innocuous design decisions; it explored the boundaries between ethical and honest visualization.",
+        "url":""
     },
     {
         "title": "Architecto qui accusamus voluptates.",
         "year": "2022",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Excepturi, ad minus! Magni nemo, adipisci sint, ipsa deserunt animi voluptates laborum distinctio cumque iusto quibusdam molestias quasi laboriosam. Nam reiciendis minus dignissimos voluptatem accusantium iure tempora culpa quis mollitia."
+        "description": "Excepturi, ad minus! Magni nemo, adipisci sint, ipsa deserunt animi voluptates laborum distinctio cumque iusto quibusdam molestias quasi laboriosam. Nam reiciendis minus dignissimos voluptatem accusantium iure tempora culpa quis mollitia.",
+        "url":""
     },
     {
         "title": "Dicta asperiores distinctio tenetur.",
         "year": "2019",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Sed, consequatur? Impedit saepe aperiam neque deserunt veniam molestias numquam doloremque eaque consectetur fugit quasi explicabo reprehenderit culpa, ea dolorem accusantium nemo doloribus officia accusamus odio! Placeat repellat doloremque adipisci!"
+        "description": "Sed, consequatur? Impedit saepe aperiam neque deserunt veniam molestias numquam doloremque eaque consectetur fugit quasi explicabo reprehenderit culpa, ea dolorem accusantium nemo doloribus officia accusamus odio! Placeat repellat doloremque adipisci!",
+        "url":""
     },
     {
         "title": "Molestias laborum sed ad.",
         "year": "2010",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Molestias qui cum ratione nisi expedita laudantium eaque, labore ducimus dolor voluptate id natus quaerat molestiae quisquam accusantium libero. Fuga iusto magnam culpa totam autem iste vel ratione eligendi incidunt?"
+        "description": "Molestias qui cum ratione nisi expedita laudantium eaque, labore ducimus dolor voluptate id natus quaerat molestiae quisquam accusantium libero. Fuga iusto magnam culpa totam autem iste vel ratione eligendi incidunt?",
+        "url":""
     },
     {
         "title": "Ea optio qui numquam!",
         "year": "2023",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Dolorem fuga reprehenderit, laudantium nam, at optio aliquam quibusdam perferendis expedita, temporibus deserunt nesciunt ab dolorum a minus exercitationem. Laborum ipsa dicta placeat voluptatum eius beatae recusandae accusamus vero dolorum."
+        "description": "Dolorem fuga reprehenderit, laudantium nam, at optio aliquam quibusdam perferendis expedita, temporibus deserunt nesciunt ab dolorum a minus exercitationem. Laborum ipsa dicta placeat voluptatum eius beatae recusandae accusamus vero dolorum.",
+        "url":""
     },
     {
         "title": "Esse assumenda autem et.",
         "year": "2022",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Quam eum veritatis quaerat soluta sapiente. Eos molestiae natus ducimus magnam porro soluta assumenda, nemo ipsa officiis quae veniam dolore quas ea iusto magni amet doloribus. Ducimus fuga cum praesentium."
+        "description": "Quam eum veritatis quaerat soluta sapiente. Eos molestiae natus ducimus magnam porro soluta assumenda, nemo ipsa officiis quae veniam dolore quas ea iusto magni amet doloribus. Ducimus fuga cum praesentium.",
+        "url":""
     },
     {
         "title": "Culpa esse doloremque ducimus?",
         "year": "2020",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Facere voluptatem necessitatibus iste ut corporis et similique, alias reiciendis temporibus architecto obcaecati, autem tempora? Nihil facilis repellat, temporibus ex assumenda recusandae cupiditate animi libero, corporis dignissimos inventore nesciunt eum!"
+        "description": "Facere voluptatem necessitatibus iste ut corporis et similique, alias reiciendis temporibus architecto obcaecati, autem tempora? Nihil facilis repellat, temporibus ex assumenda recusandae cupiditate animi libero, corporis dignissimos inventore nesciunt eum!",
+        "url":""
     },
     {
         "title": "Perferendis corporis soluta delectus.",
         "year": "2019",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Voluptatibus nihil, blanditiis labore possimus eos iure quos officiis error quibusdam quo eveniet consectetur repellendus iusto architecto excepturi perspiciatis placeat! Nobis quo laudantium omnis eos assumenda impedit numquam incidunt obcaecati!"
+        "description": "Voluptatibus nihil, blanditiis labore possimus eos iure quos officiis error quibusdam quo eveniet consectetur repellendus iusto architecto excepturi perspiciatis placeat! Nobis quo laudantium omnis eos assumenda impedit numquam incidunt obcaecati!",
+        "url":""
     },
     {
         "title": "Ut explicabo tempore doloremque.",
         "year": "2018",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Delectus sit accusamus, voluptatibus officiis modi obcaecati, blanditiis est quam repudiandae optio dignissimos aperiam adipisci tempore nesciunt! Cupiditate vitae blanditiis nemo repellendus cumque, quae sapiente quibusdam iure tenetur porro odit?"
+        "description": "Delectus sit accusamus, voluptatibus officiis modi obcaecati, blanditiis est quam repudiandae optio dignissimos aperiam adipisci tempore nesciunt! Cupiditate vitae blanditiis nemo repellendus cumque, quae sapiente quibusdam iure tenetur porro odit?",
+        "url":""
     },
     {
         "title": "Magni maiores iste at.",
         "year": "2022",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Consequatur, doloribus a ullam esse modi eos. Nesciunt at dignissimos eveniet amet dolorum, omnis consectetur rerum expedita a quos labore recusandae pariatur cum itaque voluptatibus praesentium, culpa doloremque beatae inventore!"
+        "description": "Consequatur, doloribus a ullam esse modi eos. Nesciunt at dignissimos eveniet amet dolorum, omnis consectetur rerum expedita a quos labore recusandae pariatur cum itaque voluptatibus praesentium, culpa doloremque beatae inventore!",
+        "url":""
     }
 ]
