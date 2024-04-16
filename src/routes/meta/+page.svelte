@@ -153,6 +153,13 @@
 			.nice();
 	$: commitMaxTime = timeScale.invert(commitProgress);
 
+	let raceProgress = 100;
+	$: raceTimeScale = d3.scaleTime()
+			.domain(d3.extent(commits, c => c.datetime))
+			.range([0, 100])
+			.nice();
+	$: raceCommitMaxTime = raceTimeScale.invert(raceProgress);
+
 	let filteredCommits;
 	let filteredLines;
 	$: filteredCommits = commits.filter((c) => c.datetime <= commitMaxTime);
@@ -160,8 +167,6 @@
 
 	let colors = d3.scaleOrdinal(d3.schemeTableau10);
 </script>
-
-<FileLines lines={filteredLines} colors={colors}/>
 
 <svelte:head>
 	<title>meta</title>
@@ -186,40 +191,12 @@
 	<dd>{maxFileLength}</dd>
 </dl>
 
-<label class="slider" for="slider">show commits until:
+<!-- <label class="slider" for="slider">show commits until:
 	<input type=range min="1" max="100" name="slider" bind:value={commitProgress}>
 	<time>{commitMaxTime.toLocaleString()}</time>
-</label>
+</label> -->
 
-<svg viewBox="0 0 {width} {height}" bind:this={svg}>
-	<g transform="translate(0, {usableArea.bottom})" bind:this={xAxis} />
-	<g class="gridlines" transform="translate({usableArea.left}, 0)" bind:this={yAxisGridlines} />
-	<g transform="translate({usableArea.left}, 0)" bind:this={yAxis} />
-	<g class="dots">
-		{#each filteredCommits as commit, index (commit.id) }
-			<circle
-				cx={ xScale(commit.datetime) }
-				cy={ yScale(commit.hourFrac) }
-				r="5"
-				fill="steelblue"
-				class:selected={isCommitSelected(commit)}
-				tabindex="0"
-				aria-describedby="commit-tooltip"
-				role="tooltip"
-				aria-haspopup="true"
-
-				on:mouseenter={evt => dotInteraction(index, evt)}
-				on:mouseleave={evt => dotInteraction(index, evt)}
-				on:focus={evt => dotInteraction(index, evt)}
-				on:blur={evt => dotInteraction(index, evt)}
-				on:click={evt => dotInteraction(index, evt)}
-				on:keyup={evt => dotInteraction(index, evt)}
-			/>
-		{/each}
-	</g>
-</svg>
-
-<p>{hasSelection ? selectedCommits.length : "no"} commits selected</p>
+<!-- <p>{hasSelection ? selectedCommits.length : "no"} commits selected</p> -->
 
 <dl class="stats">
 	{#each languageBreakdown as [language, lines]}
@@ -227,8 +204,6 @@
 		<dd>{lines} lines ({d3.format(".1~%")(lines / selectedLines.length)})</dd>
 	{/each}	
 </dl>
-
-<Pie data={Array.from(languageBreakdown).map(([language, lines]) => ({label: language, value: lines, id: language}))} {colors}/>
 
 <dl id="commit-tooltip" class="info tooltip" hidden={hoveredIndex === -1} bind:this={commitTooltip} style="top: {tooltipPosition.y}px; left: {tooltipPosition.x}px">
 	<dt>commit</dt>
@@ -250,6 +225,71 @@
 	<dt>lines</dt>
 	<dd>{ hoveredCommit.totalLines }</dd>
 </dl>
+
+<Scrolly bind:progress={ commitProgress }>
+	<p>
+		as the semester began, i did a lot of work late at night. most of the work was in html and css, since i hadn't learned how to use svelte at the time.
+	</p>
+	<p>
+		then, over time, i began to work on labs earlier and earlier during the day, because i wanted to protect my sleep schedule. 
+	</p>
+	<p>
+		additionally, i started using more and more svelte as my programming became more sophisticated. 
+	</p>
+	<p>
+		eventually, almost all my programming was happening in svelte, and i was doing it in the afternoon.
+	</p>
+	<svelte:fragment slot="viz">
+		<svg viewBox="0 0 {width} {height}" bind:this={svg}>
+			<g transform="translate(0, {usableArea.bottom})" bind:this={xAxis} />
+			<g class="gridlines" transform="translate({usableArea.left}, 0)" bind:this={yAxisGridlines} />
+			<g transform="translate({usableArea.left}, 0)" bind:this={yAxis} />
+			<g class="dots">
+				{#each filteredCommits as commit, index (commit.id) }
+					<circle
+						cx={ xScale(commit.datetime) }
+						cy={ yScale(commit.hourFrac) }
+						r="5"
+						fill="steelblue"
+						class:selected={isCommitSelected(commit)}
+						tabindex="0"
+						aria-describedby="commit-tooltip"
+						role="tooltip"
+						aria-haspopup="true"
+		
+						on:mouseenter={evt => dotInteraction(index, evt)}
+						on:mouseleave={evt => dotInteraction(index, evt)}
+						on:focus={evt => dotInteraction(index, evt)}
+						on:blur={evt => dotInteraction(index, evt)}
+						on:click={evt => dotInteraction(index, evt)}
+						on:keyup={evt => dotInteraction(index, evt)}
+					/>
+				{/each}
+			</g>
+		</svg>
+
+		<Pie data={Array.from(languageBreakdown).map(([language, lines]) => ({label: language, value: lines, id: language}))} {colors}/>
+	</svelte:fragment>
+</Scrolly>
+
+<Scrolly bind:progress={ raceProgress} --scrolly-layout="viz-first" --scrolly-viz-width="1.5fr">
+	<p>
+		my files began with the more basic and core files for the functionality of the website. these file lengths were fairly short and unsophisticated.
+	</p>
+	<p>
+		the files were also written mostly in html. over time, the files began to grow longer, and to have more diverse programming language types. 
+	</p>
+	<p>
+		by the end of the semester, several specific files had grown significantly in length.
+	</p>
+	<p>
+		moreover, the dominant programming language in the files were svelte and css, which are used to build the content of the site and the style of the site, 
+		respectively. 
+	</p>
+	<svelte:fragment slot="viz">
+		<FileLines lines={filteredLines} colors={colors}/>
+	</svelte:fragment>
+</Scrolly>
 
 <style>
 	:global(body) {

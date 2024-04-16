@@ -37,7 +37,7 @@
 <style>
     dl {
         display: grid;
-        grid-template-columns: .5fr 1fr;
+        grid-template-columns: .5fr .5fr;
 
         & > div {
             grid-column: 1 / -1;
