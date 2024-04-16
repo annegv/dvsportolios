@@ -8,7 +8,7 @@
 		autoPlacement,
 		offset,
 	} from '@floating-ui/dom';
-
+	import Scrolly from "svelte-scrolly";
 
 	let data = [];
 	let commits = [];
@@ -159,8 +159,6 @@
 	$: filteredLines = data.filter((l) => l.datetime <= commitMaxTime);
 
 	let colors = d3.scaleOrdinal(d3.schemeTableau10);
-
-	$: console.log(languageBreakdown);
 </script>
 
 <FileLines lines={filteredLines} colors={colors}/>
@@ -230,7 +228,7 @@
 	{/each}	
 </dl>
 
-<Pie data={Array.from(languageBreakdown).map(([language, lines]) => ({label: language, value: lines}))} />
+<Pie data={Array.from(languageBreakdown).map(([language, lines]) => ({label: language, value: lines, id: language}))} {colors}/>
 
 <dl id="commit-tooltip" class="info tooltip" hidden={hoveredIndex === -1} bind:this={commitTooltip} style="top: {tooltipPosition.y}px; left: {tooltipPosition.x}px">
 	<dt>commit</dt>
@@ -253,8 +251,11 @@
 	<dd>{ hoveredCommit.totalLines }</dd>
 </dl>
 
-
 <style>
+	:global(body) {
+		max-width: min(120ch, 80vw);
+	}
+
 	.stats {
 		display: flex;
 		flex-flow: column wrap;
