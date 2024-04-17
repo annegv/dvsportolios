@@ -14,6 +14,7 @@
         arcData = sliceGenerator(pieData);
         arcs = arcData.map(d => arcGenerator(d));
         pieData = pieData.map((d, i) => ({...d, ...arcData[i], arc: arcs[i]}));
+        transitionArcs();
     };
 
     let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
@@ -28,6 +29,19 @@
     let oldData = [];
     let wedges = {};
     let transitionDuration = 100;
+
+    function transitionArcs() {
+        let wedgeElements = Object.values(wedges);
+        d3.selectAll(wedgeElements).transition("arc")
+            .duration(transitionDuration)
+            .styleTween("d", function (_, index) {
+                let wedge = this;
+                let label = Object.keys(wedges)[index];
+                let transition = transitionArc(wedge, label);
+                return transition?.interpolator;
+            })
+            .ease(d3.easeLinear);
+    }
 
     function getEmptyArc (label, data = pieData) {
         // Union of old and new labels in the order they appear
@@ -46,7 +60,6 @@
     }
 
     function arc (wedge) {
-        let label = Object.keys(wedges)[index];
         let transition = transitionArc(wedge, label);
 
         return {
