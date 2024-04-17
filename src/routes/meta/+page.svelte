@@ -119,7 +119,7 @@
 	let selectedCommits = [];
 	$: hasSelection = selectedCommits.length > 0;
 
-	$: selectedLines = (hasSelection ? selectedCommits : commits).flatMap(d => d.lines);
+	$: selectedLines = (hasSelection ? selectedCommits : filteredCommits).flatMap(d => d.lines);
 	$: languageBreakdown = d3.rollups(selectedLines, v => d3.count(v, d => d.line), d => d.type);
 
 	let tooltipPosition = {x: 0, y: 0};
@@ -163,7 +163,7 @@
 	let filteredCommits;
 	let filteredLines;
 	$: filteredCommits = commits.filter((c) => c.datetime <= commitMaxTime);
-	$: filteredLines = data.filter((l) => l.datetime <= raceCommitMaxTime);
+	$: filteredLines = data.filter((l) => l.datetime <= commitMaxTime);
 
 	let colors = d3.scaleOrdinal(d3.schemeTableau10);
 </script>

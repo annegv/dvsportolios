@@ -14,7 +14,6 @@
         arcData = sliceGenerator(pieData);
         arcs = arcData.map(d => arcGenerator(d));
         pieData = pieData.map((d, i) => ({...d, ...arcData[i], arc: arcs[i]}));
-        transitionArcs();
     };
 
     let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
@@ -29,20 +28,6 @@
     let oldData = [];
     let wedges = {};
     let transitionDuration = 100;
-
-    function transitionArcs() {
-        let wedgeElements = Object.values(wedges);
-
-        d3.selectAll(wedgeElements).transition("arc")
-            .duration(transitionDuration)
-            .styleTween("d", function (_, index) {
-                let wedge = this;
-                let label = Object.keys(wedges)[index];
-                let transition = transitionArc(wedge, label);
-                return transition?.interpolator;
-            })
-            .ease(d3.easeLinear);
-    }
 
     function getEmptyArc (label, data = pieData) {
         // Union of old and new labels in the order they appear
@@ -61,12 +46,13 @@
     }
 
     function arc (wedge) {
-        // Calculations that will only be done once per element go here
+        let label = Object.keys(wedges)[index];
+        let transition = transitionArc(wedge, label);
+
         return {
             duration: transitionDuration,
             css: (t, u) => {
-                // t is a number between 0 and 1 that represents the transition progress; u is 1 - t
-                // TODO return CSS to be applied for the current t as a string
+                transition.interpolator(transition.type === "out" ? u : t);
             }
         }
     }
@@ -110,7 +96,8 @@
 <div class="container">
     <svg viewBox="-50 -50 100 100">
         {#each pieData as d, index (d.label)}
-            <path d={d.arc} fill={colors(d.id ?? d.label)} bind:this={wedges[d.label]}
+            <path d={d.arc} fill={colors(d.id ?? d.label)} bind:this={wedges[d.label] } 
+            transition:arc
             class:selected={selectedIndex === index}
             on:click={e => toggleWedge(index, e)} 
             on:keyup={e => toggleWedge(index, e)}
