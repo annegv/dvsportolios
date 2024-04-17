@@ -155,7 +155,7 @@
 
 	let raceProgress = 100;
 	$: raceTimeScale = d3.scaleTime()
-			.domain(d3.extent(commits, c => c.datetime))
+			.domain(d3.extent(data, c => c.datetime))
 			.range([0, 100])
 			.nice();
 	$: raceCommitMaxTime = raceTimeScale.invert(raceProgress);
@@ -163,7 +163,7 @@
 	let filteredCommits;
 	let filteredLines;
 	$: filteredCommits = commits.filter((c) => c.datetime <= commitMaxTime);
-	$: filteredLines = data.filter((l) => l.datetime <= commitMaxTime);
+	$: filteredLines = data.filter((l) => l.datetime <= raceCommitMaxTime);
 
 	let colors = d3.scaleOrdinal(d3.schemeTableau10);
 </script>
@@ -272,7 +272,7 @@
 	</svelte:fragment>
 </Scrolly>
 
-<Scrolly bind:progress={ raceProgress} --scrolly-layout="viz-first" --scrolly-viz-width="1.5fr">
+<Scrolly bind:progress={ raceProgress } --scrolly-layout="viz-first" --scrolly-viz-width="1.5fr">
 	<p>
 		my files began with the more basic and core files for the functionality of the website. these file lengths were fairly short and unsophisticated.
 	</p>
