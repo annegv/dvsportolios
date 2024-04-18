@@ -130,10 +130,10 @@
 
 
 <style>
-    d {
+    /* d {
         transition: 300ms;
         transition-property: transform, opacity, fill;
-    }
+    } */
 
     svg {
         max-width: 20em;
